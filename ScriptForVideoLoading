@@ -1,3 +1,4 @@
+-- Загрузочный экран (ScriptForVideoLoading.txt)
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
@@ -98,6 +99,47 @@ statusLabel.TextSize = 16
 statusLabel.TextXAlignment = Enum.TextXAlignment.Left
 statusLabel.Parent = mainFrame
 
+-- Кнопка закрытия
+local closeButton = Instance.new("TextButton")
+closeButton.Text = "X"
+closeButton.Size = UDim2.new(0, 20, 0, 20)
+closeButton.Position = UDim2.new(1, -25, 0, 5)
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+closeButton.TextColor3 = Color3.new(1, 1, 1)
+closeButton.Font = Enum.Font.FredokaOne
+closeButton.TextSize = 14
+closeButton.Parent = mainFrame
+
+local closeCorner = Instance.new("UICorner")
+closeCorner.CornerRadius = UDim.new(0, 10)
+closeCorner.Parent = closeButton
+
+-- Тень
+local shadow = Instance.new("ImageLabel")
+shadow.Name = "Shadow"
+shadow.Image = "rbxassetid://1316045217"
+shadow.ScaleType = Enum.ScaleType.Slice
+shadow.SliceCenter = Rect.new(10, 10, 118, 118)
+shadow.ImageTransparency = 0.7
+shadow.Size = UDim2.new(1, 10, 1, 10)
+shadow.Position = UDim2.new(0, -5, 0, -5)
+shadow.BackgroundTransparency = 1
+shadow.ZIndex = -1
+shadow.Parent = mainFrame
+
+-- Флаг завершения загрузки
+local loadingComplete = false
+
+-- Функция для запуска основного скрипта после завершения загрузки
+local function startMainScript()
+    -- Удаляем загрузочный экран
+    gui:Destroy()
+    
+    -- Загружаем и выполняем основной скрипт
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/johnscript2/A1script/refs/heads/main/ScriptForVideo"))()
+end
+
+-- Запуск этапов загрузки
 coroutine.wrap(function()
     local stages = {
         {text = "Please wait", duration = 5},
@@ -109,7 +151,7 @@ coroutine.wrap(function()
         {text = "Final loading", duration = 5},
         {text = "Ending loading", duration = 5},
         {text = "Thanks for using", duration = 5},
-        {text = "Wait", duration = math.huge}
+        {text = "Wait", duration = 5}
     }
 
     for i, stage in ipairs(stages) do
@@ -127,36 +169,19 @@ coroutine.wrap(function()
             wait(0.1)
         end
     end
+    
+    -- Помечаем загрузку как завершенную
+    loadingComplete = true
+    
+    -- После завершения всех этапов загрузки запускаем основной скрипт
+    startMainScript()
 end)()
 
--- Кнопка закрытия
-local closeButton = Instance.new("TextButton")
-closeButton.Text = "X"
-closeButton.Size = UDim2.new(0, 20, 0, 20)
-closeButton.Position = UDim2.new(1, -25, 0, 5)
-closeButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
-closeButton.TextColor3 = Color3.new(1, 1, 1)
-closeButton.Font = Enum.Font.FredokaOne
-closeButton.TextSize = 14
-closeButton.Parent = mainFrame
-
-local closeCorner = Instance.new("UICorner")
-closeCorner.CornerRadius = UDim.new(0, 10)
-closeCorner.Parent = closeButton
-
+-- Обработчик закрытия кнопки
 closeButton.MouseButton1Click:Connect(function()
-    gui:Destroy()
+    -- Закрываем только если загрузка не завершена
+    if not loadingComplete then
+        gui:Destroy()
+    end
+    -- Основной скрипт не запускается при досрочном закрытии
 end)
-
--- Тень
-local shadow = Instance.new("ImageLabel")
-shadow.Name = "Shadow"
-shadow.Image = "rbxassetid://1316045217"
-shadow.ScaleType = Enum.ScaleType.Slice
-shadow.SliceCenter = Rect.new(10, 10, 118, 118)
-shadow.ImageTransparency = 0.7
-shadow.Size = UDim2.new(1, 10, 1, 10)
-shadow.Position = UDim2.new(0, -5, 0, -5)
-shadow.BackgroundTransparency = 1
-shadow.ZIndex = -1
-shadow.Parent = mainFrame
