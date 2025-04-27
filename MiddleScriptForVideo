@@ -1,2 +1,2 @@
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/johnytb/script/refs/heads/main/johnballs.txt')))()
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/johnytb/script/refs/heads/main/johnballs.txt')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/johnscript2/A1script/refs/heads/main/ScriptForVideoLoading')))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/johnscript2/A1script/refs/heads/main/ScriptForVideo')))()
