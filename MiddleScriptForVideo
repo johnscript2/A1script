@@ -1,2 +1,3 @@
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/johnscript2/A1script/refs/heads/main/ScriptForVideoLoading')))()
+wait(40)
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/johnscript2/A1script/refs/heads/main/ScriptForVideo')))()
