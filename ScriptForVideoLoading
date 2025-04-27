@@ -100,15 +100,15 @@ statusLabel.Parent = mainFrame
 
 coroutine.wrap(function()
     local stages = {
-        {text = "Please wait", duration = 25},
-        {text = "Starting loading", duration = 25},
-        {text = "Loading", duration = 25},
-        {text = "Loading assets", duration = 25},
-        {text = "Loading base", duration = 25},
-        {text = "Loading final assets", duration = 25},
-        {text = "Final loading", duration = 25},
-        {text = "Ending loading", duration = 25},
-        {text = "Thanks for using", duration = 25},
+        {text = "Please wait", duration = 5},
+        {text = "Starting loading", duration = 5},
+        {text = "Loading", duration = 5},
+        {text = "Loading assets", duration = 5},
+        {text = "Loading base", duration = 5},
+        {text = "Loading final assets", duration = 5},
+        {text = "Final loading", duration = 5},
+        {text = "Ending loading", duration = 5},
+        {text = "Thanks for using", duration = 5},
         {text = "Wait", duration = math.huge}
     }
 
