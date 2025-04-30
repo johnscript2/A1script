@@ -1,1 +1,0 @@
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/johnscript2/A1script/refs/heads/main/ScriptForVideoLoading')))()
