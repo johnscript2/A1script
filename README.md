@@ -1,1 +1,3 @@
-**2 - Основной скрипт John**
+**1 - Source John**
+**2 - Loadstring John**
+
